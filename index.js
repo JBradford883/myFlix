@@ -43,6 +43,10 @@ let topTenMovies = [
   },
 ];
 
+
+//Return Documentation.html
+app.use(express.static('public'));
+
 //Error-handling middleware
 app.use(morgan('common'));
 
