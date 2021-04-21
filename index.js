@@ -43,6 +43,9 @@ let topTenMovies = [
   },
 ];
 
+app.get('/movies', (req, res) => {
+  res.json(topTenMovies);
+});
 
 //Return Documentation.html
 app.use(express.static('public'));
