@@ -59,10 +59,10 @@ app.get('/movies', (req, res) => {
 //Return Documentation.html
 app.use(express.static('public'));
 
-//Error-handling middleware
+//Logs to terminal
 app.use(morgan('common'));
 
-//Logs errors
+//Error-handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something went wrong!');
