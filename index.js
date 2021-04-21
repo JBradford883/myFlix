@@ -1,4 +1,8 @@
+const express = require('express');
   morgan = require('morgan');
+
+const app = express();
+
 //List of Top 10 Movies
 let topTenMovies = [
   {
