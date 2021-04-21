@@ -1,3 +1,4 @@
+  morgan = require('morgan');
 //List of Top 10 Movies
 let topTenMovies = [
   {
