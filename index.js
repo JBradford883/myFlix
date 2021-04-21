@@ -43,6 +43,11 @@ let topTenMovies = [
   },
 ];
 
+//GET requests
+app.get('/', (req, res) => {
+  res.send('Welcome to myFLix App');
+});
+
 app.get('/movies', (req, res) => {
   res.json(topTenMovies);
 });
