@@ -80,6 +80,11 @@ app.post('/users', (req, res) => {
   res.send('Returns a POST request showing that the user has registered')
 });
 
+// Allows users to update their user info (username)
+app.put('/users/:username', (req, res) => {
+  res.send('Returns a PUT request showing that the user has been updated')
+});
+
 
 //Logs to terminal
 app.use(morgan('common'));
