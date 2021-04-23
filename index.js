@@ -65,6 +65,11 @@ app.get('/movies/:title', (req, res) => {
     { return movies.title === req.params.name }));
 });
 
+// Returns data about a genre (description) by name/title (e.g., "Thriller")
+app.get('/movies/genre/:name', (req, res) => {
+  res.send('Returns a GET request about a genre (description) by name/title');
+});
+
 
 //Logs to terminal
 app.use(morgan('common'));
