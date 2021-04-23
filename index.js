@@ -1,7 +1,10 @@
 const express = require('express'),
+  bodyParser = require('body-parser'),
   morgan = require('morgan');
 
 const app = express();
+
+app.use(bodyParser.json());
 
 // List of movies
 let movies = [
