@@ -75,6 +75,11 @@ app.get('/movies/director/:name', (req, res) => {
   res.send('Returns a GET request about a director (bio, birth year, death year) by name');
 });
 
+// Allows new users to register
+app.post('/users', (req, res) => {
+  res.send('Returns a POST request showing that the user has registered')
+});
+
 
 //Logs to terminal
 app.use(morgan('common'));
