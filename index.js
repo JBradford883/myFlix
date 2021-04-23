@@ -51,6 +51,8 @@ let topTenMovies = [
 app.get('/', (req, res) => {
   res.send('Welcome to myFlix App');
 });
+// Return Documentation.html
+app.use(express.static('public'));
 
 app.get('/movies', (req, res) => {
   res.json(topTenMovies);
