@@ -103,7 +103,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to myFlix App');
 });
 
-//Logs to terminal
+// Logs to terminal
 app.use(morgan('common'));
 
 //Error-handling middleware
