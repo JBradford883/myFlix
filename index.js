@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
 app.use(express.static('public'));
 
 app.get('/movies', (req, res) => {
-  res.json(topTenMovies);
+  res.json(movies);
 });
 
 //Return Documentation.html
