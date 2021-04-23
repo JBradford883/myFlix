@@ -58,8 +58,6 @@ app.get('/movies', (req, res) => {
   res.json(movies);
 });
 
-//Return Documentation.html
-app.use(express.static('public'));
 
 //Logs to terminal
 app.use(morgan('common'));
