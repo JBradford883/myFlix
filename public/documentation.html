@@ -15,6 +15,116 @@
 application will provide users with access to information about different
 movies, directors, and genres. Users will be able to sign up, update their
 personal information, and create a list of their favorite movies.</p>
+    <header>
+      <h1>myFlix Api Documentation</h1>
+      <h2>Objective</h2>
+      <p>To build the server-side component of a “movies” web application. The web
+         application will provide users with access to information about different
+         movies, directors, and genres. Users will be able to sign up, update their
+         personal information, and create a list of their favorite movies.</p>
+    </header>
+
+    <main>
+      <h2>Endpoint Documentation</h2>
+
+      <table>
+        <tr>
+          <th>Description</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Query Parameters</th>
+          <th>Request body data format</th>
+          <th>Response body data format</th>
+        </tr>
+
+        <tr>
+          <td>Get list of all movies to the users </td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>none</td>
+          <td>none</td>
+          <td>A JSON object holding data about all the movies</td>
+        </tr>
+
+        <tr>
+          <td>Get data about a single movie by title (description, genre, director, image URL, whether it’s featured or not)</td>
+          <td>/movies/[title]</td>
+          <td>GET</td>
+          <td>/movies/:title</td>
+          <td>none</td>
+          <td>A JSON object holding data about a single movie containing the title, description, genre, director, image, and if it is featured <br><br>Example: <br>
+          [<br>{ Title: The Dark Knight,<br>Description: Description about the movie,<br>Genre: Action,<br>Director: Christopher Nolan,<br>Image: thedarkknight.jpg,<br>Featured: true }<br>]</td>
+        </tr>
+
+        <tr>
+          <td>Get data about a genre (description) by name/title (e.g., "Thriller").</td>
+          <td>/movies/genre/[genre]</td>
+          <td>GET</td>
+          <td>/movies/genre/:genre</td>
+          <td>none</td>
+          <td>A JSON object holding data about the genre.</td>
+        </tr>
+
+        <tr>
+          <td>Get data about a director (bio, birth year, death year) by name.</td>
+          <td>/movies/director/[name]</td>
+          <td>GET</td>
+          <td>/movies/director/:name</td>
+          <td>none</td>
+          <td>A JSON object holding data about the director.</td>
+        </tr>
+
+        <tr>
+          <td>Allow new users to register</td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>none</td>
+          <td>A JSON object holding data about the user who registered.<br><br>Example:<br>
+          {<br>Username:,<br>Password:,<br>Email:,<br>Birthday:,<br>}</td>
+          <td>A JSON object holding data about the user who was added.<br><br>Example:<br>
+          {<br>Username: Jbradford,<br>Password: 123456,<br>Email: email@address.com,<br>Birthday: 02-03-1988,<br>}</td>
+        </tr>
+
+        <tr>
+          <td>Allow users to update their user info (username).</td>
+          <td>/users/[Username]</td>
+          <td>PUT</td>
+          <td>/users/:Username</td>
+          <td>A JSON object holding data the user has updated.<br><br>Example:<br>
+          {<br>Username:,<br>Password:,<br>Email:,<br>Birthday:,<br>}</td>
+          <td>A JSON object holding data from the updated user information.<br><br>Example:<br>
+          {<br>Username: Jbradford,<br>Password: 123456,<br>Email: email@address.com,<br>Birthday: 02-03-1988,<br>}</td>
+        </tr>
+
+        <tr>
+          <td>Allow users to add a movie to their list of favorites.</td>
+          <td>/users/[Username]/favorites/[movieID]</td>
+          <td>POST</td>
+          <td>/user/:Username/favorites/:movieID</td>
+          <td>none</td>
+          <td>Shows a text message that the movie has been added to the users favorites list.</td>
+        </tr>
+
+        <tr>
+          <td>Allow users to remove a movie from their list of favorites.</td>
+          <td>/users/[Username]/favorites/[MovieID]</td>
+          <td>DELETE</td>
+          <td>/user/:Username/favorites/:MovieID</td>
+          <td>none</td>
+          <td>Shows a text message that the movie has been revoved from the users favorites list.</td>
+        </tr>
+
+        <tr>
+          <td>Allow existing users to deregister</td>
+          <td>/users/[Username]</td>
+          <td>DELETE</td>
+          <td>/users/:Username</td>
+          <td>none</td>
+          <td>Shows a text message that the user has been removed.</td>
+        </tr>
+      </table>
+    </main>
+
   </body>
 
 </html>
