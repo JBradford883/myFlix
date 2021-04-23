@@ -70,6 +70,11 @@ app.get('/movies/genre/:name', (req, res) => {
   res.send('Returns a GET request about a genre (description) by name/title');
 });
 
+//Returns data about a director (bio, birth year, death year) by name
+app.get('/movies/director/:name', (req, res) => {
+  res.send('Returns a GET request about a director (bio, birth year, death year) by name');
+});
+
 
 //Logs to terminal
 app.use(morgan('common'));
