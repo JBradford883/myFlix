@@ -5,6 +5,8 @@ const app = express();
 
 //List of Top 10 Movies
 let topTenMovies = [
+// List of movies
+let movies = [
   {
     title: 'The Shawshank Redemption',
     director:'Frank Darabont'
