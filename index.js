@@ -47,10 +47,6 @@ let topTenMovies = [
   },
 ];
 
-//GET requests
-app.get('/', (req, res) => {
-  res.send('Welcome to myFlix App');
-});
 // Return Documentation.html
 app.use(express.static('public'));
 
@@ -100,6 +96,10 @@ app.delete('/users/:username', (req, res) => {
   res.send('Returns a DELETE request showing that the user has been removed')
 });
 
+// GET requests
+app.get('/', (req, res) => {
+  res.send('Welcome to myFlix App');
+});
 
 //Logs to terminal
 app.use(morgan('common'));
