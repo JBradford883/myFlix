@@ -3,8 +3,6 @@ const express = require('express');
 
 const app = express();
 
-//List of Top 10 Movies
-let topTenMovies = [
 // List of movies
 let movies = [
   {
