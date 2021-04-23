@@ -90,6 +90,11 @@ app.post('/users/:username/favorites/:movieID', (req, res) => {
   res.send('Returns a POST request showing that the movies has been added to the users favorites')
 });
 
+// Allows users to remove a movie from their list of favorites (showing only a text that a movie has been removed)
+app.delete('/users/:username/favorites/:movieID', (req, res) => {
+  res.send('Returns a DELETE request showing that the movies has been revmoed from the users favorites')
+});
+
 
 //Logs to terminal
 app.use(morgan('common'));
