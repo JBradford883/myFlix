@@ -95,6 +95,11 @@ app.delete('/users/:username/favorites/:movieID', (req, res) => {
   res.send('Returns a DELETE request showing that the movies has been revmoed from the users favorites')
 });
 
+// Allow existing users to deregister (showing only a text that a user email has been removed)
+app.delete('/users/:username', (req, res) => {
+  res.send('Returns a DELETE request showing that the user has been removed')
+});
+
 
 //Logs to terminal
 app.use(morgan('common'));
