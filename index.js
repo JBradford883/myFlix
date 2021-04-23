@@ -54,6 +54,7 @@ app.get('/', (req, res) => {
 // Return Documentation.html
 app.use(express.static('public'));
 
+// Returns a list of all movies to the users
 app.get('/movies', (req, res) => {
   res.json(movies);
 });
