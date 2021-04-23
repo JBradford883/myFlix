@@ -1,0 +1,36 @@
+:root {
+  --headline-font: 'Roboto', sans-serif;
+  --primary-font: 'EB Garamond', serif;
+  --body-weight: 400;
+  --headline-weight: 700;
+}
+
+body {
+  font-family: var(--primary-font);
+  font-weight: var(--body-weight);
+}
+
+h1 {
+  font-family: var(--headline-font);
+  font-weight: var(--headline-weight);
+  font-size: 50px;
+}
+
+h2, h3, th {
+  font-family: var(--headline-font);
+  font-weight: var(--headline-weight);
+}
+
+td {
+  font-family: var(--primary-font);
+  font-weight: var(--body-weight);
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+}
