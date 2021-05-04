@@ -63,7 +63,7 @@ app.get('/movies/director/:Name', (req, res) => {
 });
 
 // Allows new users to register
-/* We’ll expect JSON in this format
+/* JSON expected in this format
 {
   ID: Integer,
   Username: String,
