@@ -128,6 +128,20 @@ app.put('/users/:Username', (req, res) => {
   });
 });
 
+// Allows users to add a movie to their list of favorites
+app.post('/users/:Username/Movies/:MovieID', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username }, {
+    $push: { FavoriteMovies: req.params.MovieID }
+  },
+  { new: true },
+  (err, updatedUser) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser);
+    }
+  });
 });
 
 // Allows users to remove a movie from their list of favorites (showing only a text that a movie has been removed)
