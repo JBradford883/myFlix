@@ -41,8 +41,14 @@ app.get('/movies/:Title', (req, res) => {
 });
 
 // Returns data about a genre (description) by name/title (e.g., "Thriller")
-app.get('/movies/genre/:name', (req, res) => {
-  res.send('Returns a GET request about a genre (description) by name/title');
+app.get('/movies/genre/:Name', (req, res) => {
+  Movies.findOne({'Genre.Name': req.params.Name}).then((movie) => {
+    res.status(201).json(movie.Genre);
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
 });
 
 //Returns data about a director (bio, birth year, death year) by name
