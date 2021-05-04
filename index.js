@@ -109,6 +109,25 @@ app.get('/users/:Username', (req, res) => {
     });
 });
 
+// Allows users to update their user info by username
+app.put('/users/:Username', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
+    {
+      Username: req.body.Username,
+      Password: req.body.Password,
+      Email: req.body.Email,
+      Birthday: req.body.Birthday
+    },
+  },
+  { new: true },
+  (err, updateUser) => {
+    if(err) {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    };
+  });
+});
+
 });
 
 // Allows users to remove a movie from their list of favorites (showing only a text that a movie has been removed)
