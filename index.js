@@ -1,3 +1,4 @@
+// Integrated Mongoose with REST API
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
