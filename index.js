@@ -123,14 +123,16 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false }), (re
       Password: req.body.Password,
       Email: req.body.Email,
       Birthday: req.body.Birthday
-    },
+    }
   },
   { new: true },
-  (err, updateUser) => {
+  (err, updatedUser) => {
     if(err) {
       console.error(err);
       res.status(500).send('Error: ' + err);
-    };
+    } else {
+      res.status(201).send(updatedUser);
+    }
   });
 });
 
