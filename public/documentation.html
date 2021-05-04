@@ -57,7 +57,7 @@
           <td>GET</td>
           <td>/movies/genre/:name</td>
           <td>none</td>
-          <td>A JSON object holding data about the genre.</td>
+          <td>A JSON object holding data about a movie genre containing the name and description.<br><br>Example:<br>[<br>{ Name: Action<br>Description: Description about the genre. }<br>]</td>
         </tr>
 
         <tr>
@@ -66,7 +66,7 @@
           <td>GET</td>
           <td>/movies/director/:name</td>
           <td>none</td>
-          <td>A JSON object holding data about the director.</td>
+          <td>A JSON object holding data about a movie director containing the name and bio.<br><br>Example:<br>[<br>{ Name: Christopher Nolan<br>Bio: Bio about the director. }<br>]</td>
         </tr>
 
         <tr>
@@ -76,8 +76,8 @@
           <td>none</td>
           <td>A JSON object holding data about the user who registered.<br><br>Example:<br>
           {<br>Username:,<br>Password:,<br>Email:,<br>Birthday:,<br>}</td>
-          <td>A JSON object holding data about the user who was added.<br><br>Example:<br>
-          {<br>Username: Jbradford,<br>Password: 123456,<br>Email: email@address.com,<br>Birthday: 02-03-1988,<br>}</td>
+          <td>A JSON object holding data from the information the user added.<br><br>Example:<br>
+          { FavoriteMovies: ""<br>_id:""<br>Username: Jbradford,<br>Password: 123456,<br>Email: email@address.com,<br>Birthday: 02-03-1988,<br>}</td>
         </tr>
 
         <tr>
@@ -88,25 +88,27 @@
           <td>A JSON object holding data the user has updated.<br><br>Example:<br>
           {<br>Username:,<br>Password:,<br>Email:,<br>Birthday:,<br>}</td>
           <td>A JSON object holding data from the updated user information.<br><br>Example:<br>
-          {<br>Username: Jbradford,<br>Password: 123456,<br>Email: email@address.com,<br>Birthday: 02-03-1988,<br>}</td>
+          { FavoriteMovies: ""<br>_id:""<br>Username: Jbradford,<br>Password: 123456,<br>Email: email@address.com,<br>Birthday: 02-03-1988,<br>}</td>
         </tr>
 
         <tr>
           <td>Allow users to add a movie to their list of favorites.</td>
-          <td>/users/[Username]/favorites/[movieID]</td>
+          <td>/users/[Username]/Movies/[movieID]</td>
           <td>POST</td>
-          <td>/user/:Username/favorites/:movieID</td>
+          <td>/user/:Username/Movies/:MovieID</td>
           <td>none</td>
-          <td>Shows a text message that the movie has been added to the users favorites list.</td>
+          <td>A JSON object holding data about the movies added to the users favorites list.<br><br>Example:<br>
+          { FavoriteMovies: ""<br>_id:""<br>Username: Jbradford,<br>Password: 123456,<br>Email: email@address.com,<br>Birthday: 02-03-1988,<br>}</td>
         </tr>
 
         <tr>
           <td>Allow users to remove a movie from their list of favorites.</td>
-          <td>/users/[Username]/favorites/[MovieID]</td>
+          <td>/users/[Username]/Movies/[MovieID]</td>
           <td>DELETE</td>
-          <td>/user/:Username/favorites/:MovieID</td>
+          <td>/user/:Username/Movies/:MovieID</td>
           <td>none</td>
-          <td>Shows a text message that the movie has been removed from the users favorites list.</td>
+          <td>A JSON object holding data about the movie removed from the users favorites list.<br><br>Example:<br>
+          { FavoriteMovies: ""<br>_id:""<br>Username: Jbradford,<br>Password: 123456,<br>Email: email@address.com,<br>Birthday: 02-03-1988,<br>}</td>
         </tr>
 
         <tr>
@@ -115,7 +117,7 @@
           <td>DELETE</td>
           <td>/users/:Username</td>
           <td>none</td>
-          <td>Shows a text message that the user has been removed.</td>
+          <td>Returns the response "Username" account was removed</td>
         </tr>
       </table>
     </main>
