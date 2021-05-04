@@ -109,9 +109,6 @@ app.get('/users/:Username', (req, res) => {
     });
 });
 
-// Allows users to add a movie to their list of favorites (showing only a text that a movie has been added)
-app.post('/users/:username/favorites/:movieID', (req, res) => {
-  res.send('Returns a POST request showing that the movies has been added to the users favorites')
 });
 
 // Allows users to remove a movie from their list of favorites (showing only a text that a movie has been removed)
