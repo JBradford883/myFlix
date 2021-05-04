@@ -97,9 +97,16 @@ app.post('/users', (req, res) => {
     });
 });
 
-// Allows users to update their user info (username)
-app.put('/users/:username', (req, res) => {
-  res.send('Returns a PUT request showing that the user has been updated')
+// Get a user by username
+app.get('/users/:Username', (req, res) => {
+  Users.findOne({ Username: req.params.Username })
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 // Allows users to add a movie to their list of favorites (showing only a text that a movie has been added)
