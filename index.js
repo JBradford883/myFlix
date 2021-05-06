@@ -1,3 +1,8 @@
+const cors = require('cors');
+app.use(cors());
+
+const { check, validationResult } = require('express-validator');
+
 // Integrated Mongoose with REST API
 const mongoose = require('mongoose');
 const Models = require('./models.js');
