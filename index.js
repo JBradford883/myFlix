@@ -10,7 +10,8 @@ const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+//mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 const express = require('express'),
   bodyParser = require('body-parser'),
@@ -93,7 +94,7 @@ app.post('/users',
     let errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.arrat() });
+      return res.status(422).json({ errors: errors.array() });
     }
 
   let hashedPassword = Users.hashPassword(req.body.Password);
@@ -220,6 +221,6 @@ app.use((err, req, res, next) => {
 
 //Listen for requests
 const port = process.env.PORT || 8080;
-app.listen(port, '0.0.0.0', () => {
-  console.log('Listening on Port ' + port);
+app.listen(port, '0.0.0.0',() => {
+ console.log('Listening on Port ' + port);
 });
