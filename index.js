@@ -1,5 +1,5 @@
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com'];
+let allowedOrigins = ['http://localhost:8080'];
 
 // CORS handling
 app.use(cors({
