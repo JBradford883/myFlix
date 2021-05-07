@@ -1,3 +1,10 @@
+const express = require('express'),
+  bodyParser = require('body-parser'),
+  uuid = require('uuid'),
+  morgan = require('morgan');
+
+const app = express();
+
 const cors = require('cors');
 let allowedOrigins = ['http://localhost:8080'];
 
@@ -24,13 +31,6 @@ const Users = Models.User;
 
 //mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
-
-const express = require('express'),
-  bodyParser = require('body-parser'),
-  uuid = require('uuid'),
-  morgan = require('morgan');
-
-const app = express();
 
 app.use(bodyParser.json());
 
