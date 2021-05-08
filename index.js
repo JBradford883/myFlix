@@ -86,8 +86,8 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', {session: false }
   });
 });
 
-// Allows new users to register
-/* JSON expected in this format
+/* Allows new users to register
+JSON expected in this format
 {
   ID: Integer,
   Username: String,
