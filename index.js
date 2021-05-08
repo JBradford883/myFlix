@@ -147,8 +147,22 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false }), (re
       });
 });
 
-// Allows users to update their user info by username
-app.put('/users/:Username', passport.authenticate('jwt', {session: false }), (req, res) => {
+/* Allows users to update their user info by username
+JSON expected in this format
+{
+  ID: Integer,
+  Username: String,
+  Password: String,
+  Email: String,
+  Birthday: Date
+}*/
+app.put('/users/:Username', passport.authenticate('jwt', {session: false }),
+[
+  check('Username', 'Username is required').isLength({min: 6}),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail()
+], (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
     {
       Username: req.body.Username,
