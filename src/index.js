@@ -24,7 +24,7 @@ const { check, validationResult } = require('express-validator');
 
 // Integrated Mongoose with REST API
 const mongoose = require('mongoose');
-const Models = require('./models.js');
+const Models = require('./src/models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
@@ -36,10 +36,10 @@ mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifie
 
 app.use(bodyParser.json());
 
-let auth = require('./auth')(app);
+let auth = require('./src/auth')(app);
 
 const passport = require('passport');
-require('./passport');
+require('./src/passport');
 
 // Returns Documentation.html about API Endpoints
 app.use(express.static('public'));
@@ -78,7 +78,6 @@ Returns data about a genre (description) by name/title (e.g., "Thriller").
 Protected route.
 Expects :Name to be passed in the URL path.
 */
-
  app.get('/movies/genre/:Name', passport.authenticate('jwt', {session: false }), (req, res) => {
   Movies.findOne({'Genre.Name': req.params.Name}).then((movie) => {
     res.status(201).json(movie.Genre);
@@ -94,7 +93,6 @@ Returns data about a director (bio, birth year, death year) by name.
 Protected route.
 Expects :Name to be passed in the URL path.
 */
-
 app.get('/movies/director/:Name', passport.authenticate('jwt', {session: false }), (req, res) => {
   Movies.findOne({'Director.Name': req.params.Name}).then((movie) => {
     res.status(201).json(movie.Director);
