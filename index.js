@@ -161,7 +161,8 @@ JSON expected in this format
 }*/
 app.put('/users/:Username', passport.authenticate('jwt', {session: false }),
 [
-  check('Username', 'Username is required').isLength({min: 6}),
+  check('Username', 'Username is required').not().isEmpty(),
+  check('Username', 'Username must be at least 6 characters').isLength({min: 6}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
   check('Password', 'Password is required').not().isEmpty(),
   check('Email', 'Email does not appear to be valid').isEmail()
