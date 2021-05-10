@@ -50,6 +50,7 @@ personal information, and create a list of their favorite movies.
 - passport-jwt
 - passport-local
 - uuid
+- eslint
 
 ---
 
