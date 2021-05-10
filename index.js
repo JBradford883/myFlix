@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 let auth = require('./auth')(app);
 
 const passport = require('passport');
-require('src/passport');
+require('./passport');
 
 // Returns Documentation.html
 app.use(express.static('public'));
