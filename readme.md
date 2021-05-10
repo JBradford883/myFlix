@@ -35,9 +35,41 @@ To view the API Endpoints for this app please view this [link](https://myflix-23
 
 Examples of how the Endpoints will render
 
-1. POST new user
+1. POST request for new user.
 
-    ![Post new user](/img/POST_NewUser.png)
+    ![Adds new user](/img/POST_NewUser.png)
+
+2. PUT request to update user.
+
+    ![Update user information](/img/PUT_UserUpdate.png)
+
+3. POST request to add favorite movie.
+
+    ![Adds favorite movie](/img/POST_AddFavMovie.png)
+
+4. DELETE request revove favorite movie.
+
+    ![Removes favorite movie](/img/DELETE_RemoveFavMovie.png)
+
+5. DELETE request allows user to deregister.
+
+    ![Deregister User](/img/DELETE_Deregister.png)
+
+6. GET request that returns all movies.
+
+    ![Return all movies](/img/GET_AllMovies.png)
+
+7. GET request to return a single movie.
+
+    ![Returns a single movie](/img/GET_SingleMovie.png)
+
+8. GET request data about a specific genre.
+
+    ![Data about single genre](/img/GET_Genre.png)
+
+9. GET request data about a specific Director.
+
+    ![Data about a director](/img/GET_Director.png)
 
 ---
 
