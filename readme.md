@@ -1,6 +1,6 @@
 # **myFlix Movie API**
 
-### **Objective**
+### **Objective:**
 
 To build the server-side component of a “movies” web application. The web
 application will provide users with access to information about different
@@ -9,21 +9,31 @@ personal information, and create a list of their favorite movies.
 
 ---
 
-### **Features of this App**
+### **Key Features:**
 
-1. Allows new users to register.
-2. Allows users to update their info (username, password, email, birthday).
-3. Allows users to add movies to a list of their favorites.
-4. Allows users to remove movies from their favorites.
-5. Allows existing users to deregister.
-6. Returns a list of ALL movies in the database to the user.
-7. Returns data about a single movie to the user (description, genre, director, image URL, and if the movie was featured.)
-8. Returns data about a genre (description) by name/title (e.g., "Action").
-9. Returns data about a director (bio, birth year, death year) by name.
+1. Returns a list of ALL movies in the database to the user.
+2. Returns data about a single movie to the user (description, genre, director, image URL, and if the movie was featured.)
+3. Returns data about a genre (description) by name/title (e.g., "Action").
+4. Returns data about a director (bio, birth year, death year) by name.
+5. Allows new users to register.
+6. Allows users to update their info (username, password, email, birthday).
+7. Allows users to add movies to a list of their favorites.
+8. Allows users to remove movies from their favorites.
+9. Allows existing users to deregister.
 
 ---
 
-### **Dependencies**
+### **Built With:**
+
+- JavaScript
+- Node.js
+- Express
+- MongoDB
+- Visual Studio Code
+
+---
+
+### **Dependencies:**
 
 - bcrypt
 - body
@@ -67,7 +77,7 @@ To view the API Endpoints for this app please view the [documentation.html](http
 
     ![Adds favorite movie](/img/POST_AddFavMovie.png)
 
-4. DELETE request revove favorite movie.
+4. DELETE request remove favorite movie.
 
     ![Removes favorite movie](/img/DELETE_RemoveFavMovie.png)
 
@@ -90,5 +100,11 @@ To view the API Endpoints for this app please view the [documentation.html](http
 9. GET request data about a specific Director.
 
     ![Data about a director](/img/GET_Director.png)
+
+---
+
+### **To clone or view this repository**
+
+Visit this link [myFlix App](https://myflix-2388-app.herokuapp.com/documentation.html)
 
 
