@@ -24,7 +24,7 @@ const { check, validationResult } = require('express-validator');
 
 // Integrated Mongoose with REST API
 const mongoose = require('mongoose');
-const Models = require('src/models.js');
+const Models = require('./src/models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
@@ -37,7 +37,7 @@ mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifie
 
 app.use(bodyParser.json());
 
-let auth = require('src/auth')(app);
+let auth = require('./src/auth')(app);
 
 const passport = require('passport');
 require('src/passport');
