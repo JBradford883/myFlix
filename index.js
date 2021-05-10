@@ -29,10 +29,9 @@ const Models = require('./models.js');
 const Movies = Models.Movie;
 const Users = Models.User;
 
-// Allows developers to view on their local host
+// Allows developers to view on local host
 require('dotenv').config();
 
-//mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 app.use(bodyParser.json());
@@ -42,10 +41,13 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
 
-// Returns Documentation.html
+// Returns Documentation.html about API Endpoints
 app.use(express.static('public'));
 
-// Returns a list of all movies to the users
+/* 
+Returns a list of all movies to the users.
+Protected route.
+*/
 app.get('/movies', passport.authenticate('jwt', {session: false }), (req, res) => {
   Movies.find().then((movies) => {
     res.status(201).json(movies);
@@ -56,7 +58,11 @@ app.get('/movies', passport.authenticate('jwt', {session: false }), (req, res) =
   });
 });
 
-// Returns data about a single movie by title
+/*
+Returns data about a single movie by title.
+Protected route.
+Expects :Title to be passed in the URL path.
+*/
 app.get('/movies/:Title', passport.authenticate('jwt', {session: false }), (req, res) => {
   Movies.findOne({ Title: req.params.Title }).then((movie) => {
     res.status(201).json(movie);
@@ -67,8 +73,13 @@ app.get('/movies/:Title', passport.authenticate('jwt', {session: false }), (req,
   });
 });
 
-// Returns data about a genre (description) by name/title (e.g., "Thriller")
-app.get('/movies/genre/:Name', passport.authenticate('jwt', {session: false }), (req, res) => {
+/*
+Returns data about a genre (description) by name/title (e.g., "Thriller").
+Protected route.
+Expects :Name to be passed in the URL path.
+*/
+
+ app.get('/movies/genre/:Name', passport.authenticate('jwt', {session: false }), (req, res) => {
   Movies.findOne({'Genre.Name': req.params.Name}).then((movie) => {
     res.status(201).json(movie.Genre);
   })
@@ -78,7 +89,12 @@ app.get('/movies/genre/:Name', passport.authenticate('jwt', {session: false }), 
   });
 });
 
-//Returns data about a director (bio, birth year, death year) by name
+/*
+Returns data about a director (bio, birth year, death year) by name.
+Protected route.
+Expects :Name to be passed in the URL path.
+*/
+
 app.get('/movies/director/:Name', passport.authenticate('jwt', {session: false }), (req, res) => {
   Movies.findOne({'Director.Name': req.params.Name}).then((movie) => {
     res.status(201).json(movie.Director);
@@ -89,15 +105,20 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', {session: false }
   });
 });
 
-/* Allows new users to register
-JSON expected in this format
+/*
+Allows new users to register.
+JSON expected in this format:
 {
   ID: Integer,
   Username: String,
   Password: String,
   Email: String,
   Birthday: Date
-}*/
+}
+Checks to make sure Username is added, correct character length, and that it does not contain alphanumeric characters.
+Checks to make sure a password is added.
+Checks to make sure the email entered is valid.
+*/
 app.post('/users',
   [
     check('Username', 'Username is required').not().isEmpty(),
@@ -139,7 +160,11 @@ app.post('/users',
     });
 });
 
-// Get a user by username
+/*
+Get a user by username
+Protected route
+Expects :Username to be passed in the URL path.
+*/
 app.get('/users/:Username', passport.authenticate('jwt', {session: false }), (req, res) => {
     Users.findOne({ Username: req.params.Username })
       .then((user) => {
@@ -151,15 +176,21 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false }), (re
       });
 });
 
-/* Allows users to update their user info by username
-JSON expected in this format
+/*
+Allows users to update their user info by username.
+Protected route.
+JSON expected in this format:
 {
   ID: Integer,
   Username: String,
   Password: String,
   Email: String,
   Birthday: Date
-}*/
+}
+Checks to make sure Username is added, correct character length, and that it does not contain alphanumeric characters.
+Checks to make sure a password is added.
+Checks to make sure the email entered is valid.
+*/
 app.put('/users/:Username', passport.authenticate('jwt', {session: false }),
 [
   check('Username', 'Username is required').not().isEmpty(),
@@ -187,7 +218,11 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false }),
   });
 });
 
-// Allows users to add a movie to their list of favorites
+/*
+Allows users to add a movie to their list of favorites/.
+Protected route.
+Expects :Username and :MovieID to be passed in the URL path.
+*/
 app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', {session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $push: { FavoriteMovies: req.params.MovieID }
@@ -203,7 +238,11 @@ app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', {sessi
   });
 });
 
-// Allows users to remove a movie from their list of favorites
+/*
+Allows users to remove a movie from their list of favorites
+Protected route.
+Expects :Username and :MovieID to be passed in the URL path.
+*/
 app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', {session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $pull: { FavoriteMovies: req.params.MovieID }
@@ -219,7 +258,11 @@ app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', {ses
   });
 });
 
-// Allow existing users to deregister
+/*
+Allows existing users to deregister.
+Protected route.
+Expects :Username to be passed in the URL path.
+*/
 app.delete('/users/:Username', passport.authenticate('jwt', {session: false }), (req, res) => {
   Users.findOneAndRemove({ Username: req.params.Username })
   .then((user) => {
