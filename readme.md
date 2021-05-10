@@ -23,6 +23,26 @@ personal information, and create a list of their favorite movies.
 
 ---
 
+### **Dependencies**
+
+- bcrypt
+- body
+- body-parser
+- cors
+- dotenv
+- express
+- express-validator
+- jsonwebtoken
+- mongoose
+- morgan
+- parser
+- passport
+- passport-jwt
+- passport-local
+- uuid
+
+---
+
 ### **Authentication and Authorization**
 
 After a user creates a profile, the user will be required to log in to the API to make requests. When a user logs in they will be assigned with an authorization token (bearer token) which will be needed to make any requests in the API.
@@ -31,9 +51,9 @@ After a user creates a profile, the user will be required to log in to the API t
 
 ### **API Endpoints**
 
-To view the API Endpoints for this app please view this [link](https://myflix-2388-app.herokuapp.com/documentation.html)
+To view the API Endpoints for this app please view the [documentation.html](https://myflix-2388-app.herokuapp.com/documentation.html)
 
-Examples of how the Endpoints will render
+**Screenshots of the Endpoints:**
 
 1. POST request for new user.
 
@@ -70,27 +90,5 @@ Examples of how the Endpoints will render
 9. GET request data about a specific Director.
 
     ![Data about a director](/img/GET_Director.png)
-
----
-
-### **Dependencies**
-
-- bcrypt
-- body
-- body-parser
-- cors
-- dotenv
-- express
-- express-validator
-- jsonwebtoken
-- mongoose
-- morgan
-- parser
-- passport
-- passport-jwt
-- passport-local
-- uuid
-
----
 
 
