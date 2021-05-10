@@ -44,9 +44,10 @@ userSchema.methods.validatePassword = function(password) {
   return bcrypt.compareSync(password, this.Password);
 };
 
-// Creates the models to be used in the main index.js file
+// Creates the models to be used in the main index.js file.
 let Movie = mongoose.model('Movie', movieSchema);
 let User = mongoose.model('User', userSchema);
 
+// Exports the models created to the index.js file.
 module.exports.Movie = Movie;
 module.exports.User = User;
