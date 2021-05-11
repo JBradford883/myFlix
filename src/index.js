@@ -197,6 +197,7 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false }),
   check('Password', 'Password is required').not().isEmpty(),
   check('Email', 'Email does not appear to be valid').isEmail()
 ], (req, res) => {
+  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
     {
       Username: req.body.Username,
@@ -222,7 +223,6 @@ Protected route.
 Expects :Username and :MovieID to be passed in the URL path.
 */
 app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', {session: false }), (req, res) => {
-  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $push: { FavoriteMovies: req.params.MovieID }
   },
