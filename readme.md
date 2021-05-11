@@ -78,7 +78,7 @@ To view the API Endpoints for this app please view the [documentation.html](http
 
     ![Adds favorite movie](/img/POST_AddFavMovie.png)
 
-4. DELETE request remove favorite movie.
+4. DELETE request to remove favorite movie.
 
     ![Removes favorite movie](/img/DELETE_RemoveFavMovie.png)
 
@@ -94,11 +94,11 @@ To view the API Endpoints for this app please view the [documentation.html](http
 
     ![Returns a single movie](/img/GET_SingleMovie.png)
 
-8. GET request data about a specific genre.
+8. GET request that returns data about a specific genre.
 
     ![Data about single genre](/img/GET_Genre.png)
 
-9. GET request data about a specific Director.
+9. GET request that returns data about a specific Director.
 
     ![Data about a director](/img/GET_Director.png)
 
@@ -107,5 +107,12 @@ To view the API Endpoints for this app please view the [documentation.html](http
 ### **To clone or view this repository**
 
 Visit this link [myFlix App](https://myflix-2388-app.herokuapp.com/documentation.html)
+
+---
+
+Column 1 | Column 2 | Column 3
+--- | --- | ---
+**Things** | _Don't_ | [Need](http://makeuseof.com)
+To | *__Look__* | `Pretty`
 
 
