@@ -62,39 +62,6 @@ After a user creates a profile, the user will be required to log in to the API t
 
 ### **API Endpoints**
 
-To view the API Endpoints for this app please view the [documentation.html](https://myflix-2388-app.herokuapp.com/documentation.html)
-
-**Screenshots of the Endpoints:**
-
-1. POST request for new user.
-
-    ![Adds new user](/img/POST_NewUser.png)
-
-2. PUT request to update user.
-
-    ![Update user information](/img/PUT_UserUpdate.png)
-
-3. POST request to add favorite movie.
-
-    ![Adds favorite movie](/img/POST_AddFavMovie.png)
-
-4. DELETE request to remove favorite movie.
-
-    ![Removes favorite movie](/img/DELETE_RemoveFavMovie.png)
-
-5. DELETE request allows user to deregister.
-
-    ![Deregister User](/img/DELETE_Deregister.png)
-
-6. GET request that returns all movies.
-
-    ![Return all movies](/img/GET_AllMovies.png)
-
-7. GET request to return a single movie.
-
-    ![Returns a single movie](/img/GET_SingleMovie.png)
-
-8. GET request that returns data about a specific genre.
 **Description** | **URL** | **HTTP METHOD** | **Request** | **Response**
 --- | --- | --- | --- | ---
 Get list of all movies to the users | /movies | GET | none | A JSON object holding data about all the movies. <a href="img/GET_AllMovies.png" target="_blank">View example 
