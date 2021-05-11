@@ -112,7 +112,7 @@ Visit this link [myFlix App](https://myflix-2388-app.herokuapp.com/documentation
 
 **Description** | **URL** | **HTTP METHOD** | **Request** | **Response**
 --- | --- | --- | --- | ---
-Get list of all movies to the users | /movies | GET | none | A JSON object holding data about all the movies. <a href="src/GET_AllMovies.png" target="_blank">View example 
+Get list of all movies to the users | /movies | GET | none | A JSON object holding data about all the movies. <a href="img/GET_AllMovies.png" target="_blank">View example 
 Get data about a single movie by title (description, genre, director, image URL, whether it’s featured or not) | /movies/[title] | GET | none | A JSON object holding data about a single movie containing the title, description, genre, director, image, and if it is featured.
 Get data about a genre (description) by name/title (e.g., "Thriller"). | /movies/genre/[name] | GET | none | A JSON object holding data about a movie genre containing the name and description.
 
