@@ -60,7 +60,7 @@ After a user creates a profile, the user will be required to log in to the API t
 
 ---
 
-### **API Endpoints**
+### **Endpoint Design**
 
 **Description** | **URL** | **HTTP METHOD** | **Request** | **Response**
 --- | --- | --- | --- | ---
