@@ -76,6 +76,7 @@ Allow existing users to deregister | /users/[Username] | DELETE | none | Returns
 
 ---
 
+### **Documentation** 
 
     ![Data about a director](/img/GET_Director.png)
 
