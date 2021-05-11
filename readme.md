@@ -74,6 +74,7 @@ Allow users to add a movie to their list of favorites. | /users/[Username]/Movie
 Allow users to remove a movie from their list of favorites. | /users/[Username]/Movies/[MovieID] | DELETE | none | A JSON object holding data about the movie removed from the users favorites list. <a href="img/DELETE_RemoveFavMovie.png" target="_blank">View example
 Allow existing users to deregister | /users/[Username] | DELETE | none | Returns the response "Username" account was removed. <a href="img/DELETE_Deregister.png" target="_blank">View example
 
+---
 
 
     ![Data about a director](/img/GET_Director.png)
