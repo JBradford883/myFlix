@@ -76,7 +76,6 @@ Allow existing users to deregister | /users/[Username] | DELETE | none | Returns
 
     ![Data about single genre](/img/GET_Genre.png)
 
-9. GET request that returns data about a specific Director.
 
     ![Data about a director](/img/GET_Director.png)
 
