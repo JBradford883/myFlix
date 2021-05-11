@@ -78,6 +78,7 @@ Allow existing users to deregister | /users/[Username] | DELETE | none | Returns
 
 ### **Documentation** 
 
+To view the API documentation, please view the [documentation.html](https://myflix-2388-app.herokuapp.com/documentation.html)
 
 ---
 
