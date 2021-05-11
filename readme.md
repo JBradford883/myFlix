@@ -95,6 +95,17 @@ To view the API Endpoints for this app please view the [documentation.html](http
     ![Returns a single movie](/img/GET_SingleMovie.png)
 
 8. GET request that returns data about a specific genre.
+**Description** | **URL** | **HTTP METHOD** | **Request** | **Response**
+--- | --- | --- | --- | ---
+Get list of all movies to the users | /movies | GET | none | A JSON object holding data about all the movies. <a href="img/GET_AllMovies.png" target="_blank">View example 
+Get data about a single movie by title (description, genre, director, image URL, whether it’s featured or not) | /movies/[title] | GET | none | A JSON object holding data about a single movie containing the title, description, genre, director, image, and if it is featured. <a href="img/GET_SingleMovie.png" target="_blank">View example
+Get data about a genre (description) by name/title (e.g., "Thriller"). | /movies/genre/[name] | GET | none | A JSON object holding data about a movie genre containing the name and description. <a href="img/GET_Genre.png" target="_blank">View example
+Get data about a director (bio, birth year, death year) by name. | /movies/director/[name] | GET | /movies/director/:name | A JSON object holding data about a movie director containing the name and bio. <a href="img/GET_Director.png" target="_blank">View example
+Allow new users to register | /users | POST | A JSON object holding data about the user who registered. | A JSON object holding data from the information the user added. <a href="img/POST_NewUser.png" target="_blank">View example
+Allow users to update their user info (username). | /users/[Username] | PUT | A JSON object holding data the user has updated. | A JSON object holding data from the information the user added. <a href="img/PUT_UserUpdate.png" target="_blank">View example
+Allow users to add a movie to their list of favorites. | /users/[Username]/Movies/[MovieID] | POST | none | A JSON object holding data about the movies added to the users favorites list. <a href="img/POST_AddFavMovie.png" target="_blank">View example
+Allow users to remove a movie from their list of favorites. | /users/[Username]/Movies/[MovieID] | DELETE | none | A JSON object holding data about the movie removed from the users favorites list. <a href="img/DELETE_RemoveFavMovie.png" target="_blank">View example
+Allow existing users to deregister | /users/[Username] | DELETE | none | Returns the response "Username" account was removed. <a href="img/DELETE_Deregister.png" target="_blank">View example
 
     ![Data about single genre](/img/GET_Genre.png)
 
@@ -108,18 +119,5 @@ To view the API Endpoints for this app please view the [documentation.html](http
 
 Visit this link [myFlix App](https://myflix-2388-app.herokuapp.com/documentation.html)
 
----
-
-**Description** | **URL** | **HTTP METHOD** | **Request** | **Response**
---- | --- | --- | --- | ---
-Get list of all movies to the users | /movies | GET | none | A JSON object holding data about all the movies. <a href="img/GET_AllMovies.png" target="_blank">View example 
-Get data about a single movie by title (description, genre, director, image URL, whether it’s featured or not) | /movies/[title] | GET | none | A JSON object holding data about a single movie containing the title, description, genre, director, image, and if it is featured. <a href="img/GET_SingleMovie.png" target="_blank">View example
-Get data about a genre (description) by name/title (e.g., "Thriller"). | /movies/genre/[name] | GET | none | A JSON object holding data about a movie genre containing the name and description. <a href="img/GET_Genre.png" target="_blank">View example
-Get data about a director (bio, birth year, death year) by name. | /movies/director/[name] | GET | /movies/director/:name | A JSON object holding data about a movie director containing the name and bio. <a href="img/GET_Genre.png" target="_blank">View example
-Allow new users to register | /users | POST | A JSON object holding data about the user who registered. | A JSON object holding data from the information the user added. <a href="img/GET_Genre.png" target="_blank">View example
-Allow users to update their user info (username). | /users/[Username] | PUT | A JSON object holding data the user has updated. | A JSON object holding data from the information the user added. <a href="img/GET_Genre.png" target="_blank">View example
-Allow users to add a movie to their list of favorites. | /users/[Username]/Movies/[MovieID] | POST | none | A JSON object holding data about the movies added to the users favorites list. <a href="img/GET_Genre.png" target="_blank">View example
-Allow users to remove a movie from their list of favorites. | /users/[Username]/Movies/[MovieID] | DELETE | none | A JSON object holding data about the movie removed from the users favorites list. <a href="img/DELETE_RemoveFavMovie.png" target="_blank">View example
-Allow existing users to deregister | /users/[Username] | DELETE | none | Returns the response "Username" account was removed. <a href="img/DELETE_Deregister.png" target="_blank">View example
 
 
