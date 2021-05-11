@@ -110,10 +110,10 @@ Visit this link [myFlix App](https://myflix-2388-app.herokuapp.com/documentation
 
 ---
 
-**Description** | **URL** | **HTTP METHOD** | **Query Parameters** | **Request** | **Response**
+**Description** | **URL** | **HTTP METHOD** | **Request** | **Response**
 --- | --- | --- | --- | --- | ---
 Get list of all movies to the users | /movies | GET | none | A JSON object holding data about all the movies.
-Get data about a single movie by title (description, genre, director, image URL, whether it’s featured or not) | /movies/[title] | GET | /movies/:title | none | A JSON object holding data about a single movie containing the title, description, genre, director, image, and if it is featured.
+Get data about a single movie by title (description, genre, director, image URL, whether it’s featured or not) | /movies/[title] | GET | none | A JSON object holding data about a single movie containing the title, description, genre, director, image, and if it is featured.
 hf |
 
 
