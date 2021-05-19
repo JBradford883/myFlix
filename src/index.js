@@ -6,7 +6,7 @@ const express = require('express'),
 const app = express();
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234'];
 
 // CORS handling
 app.use(cors({
