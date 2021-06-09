@@ -48,7 +48,7 @@ app.use(express.static('public'));
 Returns a list of all movies to the users.
 Protected route.
 */
-app.get('/movies', (req, res) => {
+app.get('/movies', function (req, res) {
   Movies.find().then((movies) => {
     res.status(201).json(movies);
   })
