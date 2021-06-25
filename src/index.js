@@ -190,13 +190,14 @@ Checks to make sure a password is added.
 Checks to make sure the email entered is valid.
 */
 app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
-  [
-    check('Username', 'Username is required').not().isEmpty(),
-    check('Username', 'Username must be at least 6 characters').isLength({ min: 6 }),
-    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-    check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email does not appear to be valid').isEmail()
-  ], (req, res) => {
+  // [
+  //   check('Username', 'Username is required').not().isEmpty(),
+  //   check('Username', 'Username must be at least 6 characters').isLength({ min: 6 }),
+  //   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  //   check('Password', 'Password is required').not().isEmpty(),
+  //   check('Email', 'Email does not appear to be valid').isEmail()
+  // ], 
+  (req, res) => {
     let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOneAndUpdate({ Username: req.params.Username }, {
       $set:
