@@ -189,35 +189,41 @@ Checks to make sure Username is added, correct character length, and that it doe
 Checks to make sure a password is added.
 Checks to make sure the email entered is valid.
 */
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
-  // [
-  //   check('Username', 'Username is required').not().isEmpty(),
-  //   check('Username', 'Username must be at least 6 characters').isLength({ min: 6 }),
-  //   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-  //   check('Password', 'Password is required').not().isEmpty(),
-  //   check('Email', 'Email does not appear to be valid').isEmail()
-  // ], 
-  (req, res) => {
-    let hashedPassword = Users.hashPassword(req.body.Password);
-    Users.findOneAndUpdate({ Username: req.params.Username }, {
-      $set:
-      {
-        Username: req.body.Username,
-        Password: hashedPassword,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday
+app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
+  // check validation object for errors
+  let errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  };
+
+  // Hash the submitted password
+  let hashedPassword = Users.hashPassword(req.body.Password);
+  let updateObject = {}
+  if (req.body.Username) {
+    updateObject.Username = req.body.Username
+  }
+  if (req.body.Password) {
+    updateObject.Password = req.body.Password
+  }
+  if (req.body.Email) {
+    updateObject.Email = req.body.Email
+  }
+  if (req.body.Birthday) {
+    updateObject.Birthday = req.body.Birthday
+  }
+
+  Users.findOneAndUpdate({ Username: req.params.Username }, { $set: updateObject },
+    { new: true }, // This line makes sure that the updated document is returned
+    (err, updatedUser) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
       }
-    },
-      { new: true },
-      (err, updatedUser) => {
-        if (err) {
-          console.error(err);
-          res.status(500).send('Error: ' + err);
-        } else {
-          res.status(201).send(updatedUser);
-        }
-      });
-  });
+    });
+});
 
 /*
 Allows users to add a movie to their list of favorites/.
