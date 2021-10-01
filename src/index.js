@@ -6,7 +6,7 @@ const express = require('express'),
 const app = express();
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflix-app-react.netlify.app', 'http://localhost:4200', 'https://jbradford883.github.io/'];
+let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflix-app-react.netlify.app', 'http://localhost:4200', 'https://jbradford883.github.io/myFlix-Angular-client'];
 
 // CORS handling
 app.use(cors({
