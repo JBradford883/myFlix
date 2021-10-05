@@ -5,10 +5,21 @@ const express = require('express'),
 
 const app = express();
 
+/**
+ * define allowedOrigins to be allowed by CORS
+ */
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://myflix-app-react.netlify.app', 'http://localhost:4200', 'https://jbradford883.github.io'];
+let allowedOrigins = [
+  'http://localhost:8080',
+  'http://localhost:1234',
+  'https://myflix-app-react.netlify.app',
+  'http://localhost:4200',
+  'https://jbradford883.github.io'
+];
 
-// CORS handling
+/**
+ * CORS handling
+ */
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
@@ -41,13 +52,18 @@ let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
 
-// Returns Documentation.html about API Endpoints
+/**
+ * Returns Documentation.html about API Endpoints
+ */
 app.use(express.static('public'));
 
-/* 
-Returns a list of all movies to the users.
-Protected route.
-*/
+/**
+ * Get all movies
+ * @method GET
+ * @param {string} endpoint
+ * @returns {object} contains all movies and movie data
+ * @requires authenticate JWT
+ */
 app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find().then((movies) => {
     res.status(201).json(movies);
@@ -58,11 +74,15 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) 
     });
 });
 
-/*
-Returns data about a single movie by title.
-Protected route.
-Expects :Title to be passed in the URL path.
-*/
+/**
+ * Returns data about a single movie by title.
+ * Protected route.
+ * Expects :Title to be passed in the URL path.
+ * @method GET
+ * @param {string} (title) endpoint
+ * @returns {object} data about a single movie
+ * @requires authenticate JWT
+ */
 app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.findOne({ Title: req.params.Title }).then((movie) => {
     res.status(201).json(movie);
@@ -73,11 +93,15 @@ app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), (req
     });
 });
 
-/*
-Returns data about a genre (description) by name/title (e.g., "Thriller").
-Protected route.
-Expects :Name to be passed in the URL path.
-*/
+/**
+ * Returns data about a genre (description) by name/title (e.g., "Thriller").
+ * Protected route.
+ * Expects :Name to be passed in the URL path.
+ * @method GET
+ * @param {string} (name) endpoint
+ * @returns {object} data about the genre
+ * @requires authenticate JWT
+ */
 app.get('/movies/genre/:Name', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.findOne({ 'Genre.Name': req.params.Name }).then((movie) => {
     res.status(201).json(movie.Genre);
@@ -88,11 +112,15 @@ app.get('/movies/genre/:Name', passport.authenticate('jwt', { session: false }),
     });
 });
 
-/*
-Returns data about a director (bio, birth year, death year) by name.
-Protected route.
-Expects :Name to be passed in the URL path.
-*/
+/**
+ * Returns data about a director (bio, birth year, death year) by name.
+ * Protected route.
+ * Expects :Name to be passed in the URL path.
+ * @method GET
+ * @param {string} (name) endpoint
+ * @returns {object} data about the director
+ * @requires authenticate JWT
+ */
 app.get('/movies/director/:Name', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.findOne({ 'Director.Name': req.params.Name }).then((movie) => {
     res.status(201).json(movie.Director);
@@ -103,20 +131,25 @@ app.get('/movies/director/:Name', passport.authenticate('jwt', { session: false 
     });
 });
 
-/*
-Allows new users to register.
-JSON expected in this format:
-{
-  ID: Integer,
-  Username: String,
-  Password: String,
-  Email: String,
-  Birthday: Date
-}
-Checks to make sure Username is added, correct character length, and that it does not contain alphanumeric characters.
-Checks to make sure a password is added.
-Checks to make sure the email entered is valid.
-*/
+/**
+ * Allows new users to register.
+ * JSON expected in this format:
+ * {
+ *  ID: Integer,
+ *  Username: String,
+ *  Password: String,
+ *  Email: String,
+ *  Birthday: Date
+ * }
+ * Checks to make sure Username is added, correct character length, and that it does not contain alphanumeric characters.
+ * Checks to make sure a password is added.
+ * Checks to make sure the email entered is valid.
+ * @method POST
+ * @param {object} object containing the users profile details
+ * @returns {object} json-object added user
+ * @requires properties username, password, email
+ * @requires auth no authentication - public
+ */
 app.post('/users',
   [
     check('Username', 'Username is required').not().isEmpty(),
@@ -158,11 +191,15 @@ app.post('/users',
       });
   });
 
-/*
-Get a user by username
-Protected route
-Expects :Username to be passed in the URL path.
-*/
+/**
+ * Get a user by username
+ * Protected route
+ * Expects :Username to be passed in the URL path.
+ * @method GET
+ * @param {string} (Username) endpoint
+ * @returns {object} containing the user
+ * @requires authenticate JWT
+ */
 app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOne({ Username: req.params.Username })
     .then((user) => {
@@ -174,21 +211,25 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (r
     });
 });
 
-/*
-Allows users to update their user info by username.
-Protected route.
-JSON expected in this format:
-{
-  ID: Integer,
-  Username: String,
-  Password: String,
-  Email: String,
-  Birthday: Date
-}
-Checks to make sure Username is added, correct character length, and that it does not contain alphanumeric characters.
-Checks to make sure a password is added.
-Checks to make sure the email entered is valid.
-*/
+/**
+ * Allows new users to register.
+ * JSON expected in this format:
+ * {
+ *  ID: Integer,
+ *  Username: String,
+ *  Password: String,
+ *  Email: String,
+ *  Birthday: Date
+ * }
+ * Checks to make sure Username is added, correct character length, and that it does not contain alphanumeric characters.
+ * Checks to make sure a password is added.
+ * Checks to make sure the email entered is valid.
+ * @method PUT
+ * @param {object} object containing the users profile details
+ * @returns {object} json-object added user
+ * @requires properties username, password, email
+ * @requires authenticate JWT
+ */
 app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   // check validation object for errors
   let errors = validationResult(req);
@@ -225,11 +266,15 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (r
     });
 });
 
-/*
-Allows users to add a movie to their list of favorites/.
-Protected route.
-Expects :Username and :MovieID to be passed in the URL path.
-*/
+/**
+ * Allows users to add a movie to their list of favorites/.
+ * Protected route.
+ * Expects :Username and :MovieID to be passed in the URL path.
+ * @method POST
+ * @param {string} (Username, movieID) endpoint
+ * @returns {statusMessage} success/error
+ * @requires authenticate JWT
+ */
 app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $push: { FavoriteMovies: req.params.MovieID }
@@ -245,11 +290,15 @@ app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { sess
     });
 });
 
-/*
-Allows users to remove a movie from their list of favorites
-Protected route.
-Expects :Username and :MovieID to be passed in the URL path.
-*/
+/**
+ * Allows users to remove a movie to their list of favorites/.
+ * Protected route.
+ * Expects :Username and :MovieID to be passed in the URL path.
+ * @method DELETE
+ * @param {string} (Username, movieID) endpoint
+ * @returns {statusMessage} success/error
+ * @requires authenticate JWT
+ */
 app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $pull: { FavoriteMovies: req.params.MovieID }
@@ -265,11 +314,15 @@ app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { se
     });
 });
 
-/*
-Allows existing users to deregister.
-Protected route.
-Expects :Username to be passed in the URL path.
-*/
+/**
+ * Allows existing users to deregister.
+ * Protected route.
+ * Expects :Username to be passed in the URL path.
+ * @method DELETE
+ * @param {string} (username) endpoint
+ * @returns {statusMessage} success/error
+ * @requires authenticate JWT
+ */
 app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndRemove({ Username: req.params.Username })
     .then((user) => {
@@ -290,7 +343,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to myFlix App');
 });
 
-// Logs to terminal
+// HTML request
 app.use(morgan('common'));
 
 //Error-handling middleware
